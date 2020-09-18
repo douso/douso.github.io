@@ -12,4 +12,28 @@
         <category>Git</category>
       </categories>
   </entry>
+  <entry>
+    <title>Mysql快速导入导出数据</title>
+    <url>/2020-09-18-Mysql%E5%BF%AB%E9%80%9F%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA%E6%95%B0%E6%8D%AE.html</url>
+    <content><![CDATA[<h3 id="一、导出SQL文件"><a href="#一、导出SQL文件" class="headerlink" title="一、导出SQL文件"></a>一、导出SQL文件</h3><ul>
+<li>导出数据库（包含数据）<br><code>mysqldump -u user -p pass dbname &gt; dbname.sql;</code></li>
+<li>导出数据表（包含数据）<br><code>mysqldump -u user -p pass dbname tablename &gt; tablename.sql;</code></li>
+<li>导出数据库结构<br><code>mysqldump -u user -p pass -d dbname &gt; dbname.sql;</code></li>
+<li>导出数据表结构<br><code>mysqldump -u user -p pass -d dbname tablename &gt; tablename.sql;</code></li>
+</ul>
+<blockquote>
+<p>说明：远程连接添加参数-h 主机地址 -P 端口</p>
+</blockquote>
+<h3 id="二、导入SQL文件"><a href="#二、导入SQL文件" class="headerlink" title="二、导入SQL文件"></a>二、导入SQL文件</h3><h4 id="1、系统命令"><a href="#1、系统命令" class="headerlink" title="1、系统命令"></a>1、系统命令</h4><p><code>mysql -u user -p pass dbname &lt; /home/dbname.sql;</code></p>
+<h4 id="2、mysql命令"><a href="#2、mysql命令" class="headerlink" title="2、mysql命令"></a>2、mysql命令</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mysql&gt;</span><br><span class="line">use dbname;</span><br><span class="line">source &#x2F;home&#x2F;dbname.sql;</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、导出csv文件数据"><a href="#三、导出csv文件数据" class="headerlink" title="三、导出csv文件数据"></a>三、导出csv文件数据</h3><h4 id="1、系统命令-1"><a href="#1、系统命令-1" class="headerlink" title="1、系统命令"></a>1、系统命令</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ mysql -e &quot;set names gbk;select * from test where id &gt; 5&quot; | sed -e  &quot;s&#x2F;\t&#x2F;,&#x2F;g&quot; -e &quot;s&#x2F;NULL&#x2F;  &#x2F;g&quot; -e &quot;s&#x2F;\n&#x2F;\r\n&#x2F;g&quot; &gt; &#x2F;db&#x2F;test.csv</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 在-e参数中实际使用了两条命令，一条是设置字符集，另一条是select语句</span><br><span class="line">&#x2F;&#x2F; 通过管道把每一行数据都通过正则来处理</span><br><span class="line">&#x2F;&#x2F; 字段之间的TAB键换为“,”，然后把字段值中的null替换为空字符</span><br><span class="line">&#x2F;&#x2F; 若不导出标题行，可以使用-N参数</span><br></pre></td></tr></table></figure>
+<h4 id="2、mysql命令-1"><a href="#2、mysql命令-1" class="headerlink" title="2、mysql命令"></a>2、mysql命令</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 使用select .... into outfile的方法</span><br><span class="line">select * from test limit 1 into outfile &quot;&#x2F;db&#x2F;test1.csv&quot;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
 </search>
