@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Centos防火墙设置与端口开放的方法 - 月下飞雪博客网</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="月下飞雪博客网站，定期分享和记录一些技术知识点，供大家以后参考学习,Centos升级到7之后，内置的防火墙已经从iptables变成了firewalld。所以，端口的开启还是要从两种情况来说明的，即iptables和firewalld。更多关于CentOs防火墙的最,"> 
+    <meta name="author" content="Di Fei"> 
+    <link rel="alternative" href="atom.xml" title="月下飞雪博客网" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">月下飞雪博客网</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://dfei.gitee.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">Centos防火墙设置与端口开放的方法</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Centos防火墙设置与端口开放的方法</h1>
+        <div class="stuff">
+            <span>十月 15, 2020</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <p>Centos升级到7之后，内置的防火墙已经从iptables变成了firewalld。所以，端口的开启还是要从两种情况来说明的，即iptables和firewalld。更多关于CentOs防火墙的最新内容，请参考Redhat官网。</p>
+<p><b>一、iptables</b></p>
+<p>1.打开/关闭/重启防火墙</p>
+<p>开启防火墙(重启后永久生效)：chkconfig iptables on</p>
+<p>关闭防火墙(重启后永久生效)：chkconfig iptables off</p>
+<p>开启防火墙(即时生效，重启后失效)：service iptables start</p>
+<p>关闭防火墙(即时生效，重启后失效)：service iptables stop</p>
+<p>重启防火墙:service iptables restartd</p>
+<p>2.查看打开的端口</p>
+<p>/etc/init.d/iptables status</p>
+<p>3.打开某个端口(以8080为例)</p>
+<p>（1）开启端口</p>
+<p>iptables -A INPUT -p tcp –dport 8080 -j ACCEPT</p>
+<p>（2）保存并重启防火墙</p>
+<p>/etc/rc.d/init.d/iptables save/etc/init.d/iptables restart</p>
+<p>4.打开49152~65534之间的端口</p>
+<p>iptables -A INPUT -p tcp –dport 49152:65534 -j ACCEPT  </p>
+<p>同样，这里需要对设置进行保存，并重启防火墙。</p>
+<p>5.其他打开方式</p>
+<p>我们还可以通过修改/etc/sysconfig/iptables文件的方式开启端口，如下</p>
+<p>vi /etc/sysconfig/iptables</p>
+<p>然后在文件中增加一行</p>
+<p>-A RH-Firewall-1-INPUT -m state –state NEW -m tcp -p tcp –dport 8080 -j ACCEPT</p>
+<p>参数说明:</p>
+<pre><code>–A 参数就看成是添加一条规则
+
+–p 指定是什么协议，我们常用的tcp 协议，当然也有udp，例如53端口的DNS
+
+–dport 就是目标端口，当数据从外部进入服务器为目标端口
+
+–sport 数据从服务器出去，则为数据源端口使用
+
+–j 就是指定是 ACCEPT -接收 或者 DROP 不接收</code></pre><p><b>二、firewalld</b></p>
+<p>Centos7默认安装了firewalld，如果没有安装的话，可以使用 yum install firewalld firewalld-config进行安装。</p>
+<p>1.启动防火墙</p>
+<p>systemctl start firewalld</p>
+<p>2.禁用防火墙</p>
+<p>systemctl stop firewalld</p>
+<p>3.设置开机启动</p>
+<p>systemctl enable firewalld</p>
+<p>4.停止并禁用开机启动</p>
+<p>sytemctl disable firewalld</p>
+<p>5.重启防火墙</p>
+<p>firewall-cmd –reload</p>
+<p>6.查看状态</p>
+<p>systemctl status firewalld或者 firewall-cmd –state</p>
+<p>7.查看版本</p>
+<p>firewall-cmd –version</p>
+<p>8.查看帮助</p>
+<p>firewall-cmd –help</p>
+<p>9.查看区域信息</p>
+<p>firewall-cmd –get-active-zones</p>
+<p>10.查看指定接口所属区域信息</p>
+<p>firewall-cmd –get-zone-of-interface=eth0</p>
+<p>11.拒绝所有包</p>
+<p>firewall-cmd –panic-on</p>
+<p>12.取消拒绝状态</p>
+<p>firewall-cmd –panic-off</p>
+<p>13.查看是否拒绝</p>
+<p>firewall-cmd –query-panic</p>
+<p>14.将接口添加到区域(默认接口都在public)</p>
+<p>firewall-cmd –zone=public –add-interface=eth0</p>
+<p>(永久生效再加上 –permanent 然后reload防火墙)</p>
+<p>15.设置默认接口区域</p>
+<p>firewall-cmd –set-default-zone=public(立即生效，无需重启)</p>
+<p>16.更新防火墙规则</p>
+<p>firewall-cmd –reload或firewall-cmd –complete-reload</p>
+<p>(两者的区别就是第一个无需断开连接，就是firewalld特性之一动态添加规则，第二个需要断开连接，类似重启服务)</p>
+<p>17.查看指定区域所有打开的端口</p>
+<p>firewall-cmd –zone=public –list-ports</p>
+<p>18.在指定区域打开端口（记得重启防火墙）</p>
+<p>firewall-cmd –zone=public –add-port=80/tcp (永久生效再加上 –permanent)</p>
+<p>说明：<br>        –zone 作用域<br>        –add-port=8080/tcp 添加端口，格式为：端口/通讯协议<br>        –permanent #永久生效，没有此参数重启后失效</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+				
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

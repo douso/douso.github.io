@@ -5,12 +5,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>月下飞雪博客网</title>
+    <title>freessl.cn申请免费ssl服务器证书 - 月下飞雪博客网</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="月下飞雪博客网站，定期分享和记录一些技术知识点，供大家以后参考学习,"> 
+    <meta name="description" content="月下飞雪博客网站，定期分享和记录一些技术知识点，供大家以后参考学习,网站地址：https://freessl.cn/
+具体步骤：
+
+品牌选择有效期为1年的TrustAsia
+输入要申请域名，例如：https://student.e-ai-edu.com
+直接点击“创,"> 
     <meta name="author" content="Di Fei"> 
     <link rel="alternative" href="atom.xml" title="月下飞雪博客网" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -33,27 +38,105 @@
 <body class="loading">
     <span id="config-title" style="display:none">月下飞雪博客网</span>
     <div id="loader"></div>
-    <div id="single" class="page">
-    <div id="top">
-        <a class="iconfont icon-left image-icon" href="javascript:history.back()"></a>
-    </div>
-    <div class="section">
-        <div class="article">
-            <div class="main">
-                <div class="content">
-                
-                    <div class="set">
-  <h2>分类</h2>
-  <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a><span class="category-list-count">1</span></li></ul>
-</div>
-
-                
-                </div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://dfei.gitee.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">freessl.cn申请免费ssl服务器证书</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
             </div>
+            <div id="qr"></div>
         </div>
     </div>
+    <div class="scrollbar"></div>
 </div>
 
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">freessl.cn申请免费ssl服务器证书</h1>
+        <div class="stuff">
+            <span>十月 15, 2020</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <p><b>网站地址：<a href="https://freessl.cn/" target="_blank" rel="noopener">https://freessl.cn/</a></b></p>
+<p><b>具体步骤：</b></p>
+<ul>
+<li>品牌选择有效期为1年的TrustAsia</li>
+<li>输入要申请域名，例如：<a href="https://student.e-ai-edu.com" target="_blank" rel="noopener">https://student.e-ai-edu.com</a></li>
+<li>直接点击“创建免费的SSL证书”进入下一步</li>
+</ul>
+<hr>
+<ul>
+<li><p>选择证书类型：</p>
+<ul>
+<li>RSA，传统算法。优点，支持好，老的客户端也支持。缺点，2048以下的都不算安全。密钥比较大，加密计算慢点（对比ECC）。</li>
+<li>ECC，新算法，椭圆曲线。优点，密钥小，计算快。缺点，老客户端可能不支持。不过这年头，没什么老客户端了。</li>
+</ul>
+</li>
+<li><p>选择验证类型：</p>
+<ul>
+<li>DNS，要把验证字符串，写入指定域名的TXT记录。</li>
+<li>文件验证，把验证字符串，写入你的web服务器的，指定的路径的，文件中。</li>
+</ul>
+</li>
+<li><p>CSR生成：</p>
+<ul>
+<li>离线生成，你的浏览器需要装个插件（KeyManager 1.2.14以上版本），我没装，所以没用过。</li>
+<li>浏览器生成，edge，chrome，safari，ie11，都支持。唯独Firefox不支持。其他版本的ie，我不知道。但ie6肯定不支持。</li>
+<li>我有CSR，自己用openssl生成一个证书请求，上传给它。这个请求有什么要求，不清楚，没试过。</li>
+</ul>
+</li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+				
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
 </body>
 
 
