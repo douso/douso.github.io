@@ -5,12 +5,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>月下飞雪博客网</title>
+    <title>使用k3d搭建k3s集群 - 月下飞雪博客网</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="月下飞雪博客网站，定期分享和记录一些技术知识点，供大家以后参考学习,"> 
+    <meta name="description" content="月下飞雪博客网站，定期分享和记录一些技术知识点，供大家以后参考学习,k3d官网
+1、安装k3d
+Windows下载最新版本文件，放在指定目录，并加入环境变量即可使用
+
+Linux
+
+wget -q -O - https://raw.githubusercontent,"> 
     <meta name="author" content="Di Fei"> 
     <link rel="alternative" href="atom.xml" title="月下飞雪博客网" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -33,23 +39,86 @@
 <body class="loading">
     <span id="config-title" style="display:none">月下飞雪博客网</span>
     <div id="loader"></div>
-    <div id="single" class="page">
-    <div id="top">
-        <a class="iconfont icon-left image-icon" href="javascript:history.back()"></a>
-    </div>
-    <div class="section">
-        <div class="article">
-            <div class="main">
-                <div class="content">
-                
-                        <h2 id="个人座右铭："><a href="#个人座右铭：" class="headerlink" title="个人座右铭："></a>个人座右铭：</h2><h4 id="有志者、事竟成，破釜沉舟，百二秦关终属楚；"><a href="#有志者、事竟成，破釜沉舟，百二秦关终属楚；" class="headerlink" title="有志者、事竟成，破釜沉舟，百二秦关终属楚；"></a>有志者、事竟成，破釜沉舟，百二秦关终属楚；</h4><h4 id="苦心人、天不负，卧薪尝胆，三千越甲可吞吴。"><a href="#苦心人、天不负，卧薪尝胆，三千越甲可吞吴。" class="headerlink" title="苦心人、天不负，卧薪尝胆，三千越甲可吞吴。"></a>苦心人、天不负，卧薪尝胆，三千越甲可吞吴。</h4>
-                
-                </div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://dfei.gitee.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">使用k3d搭建k3s集群</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
             </div>
+            <div id="qr"></div>
         </div>
     </div>
+    <div class="scrollbar"></div>
 </div>
 
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">使用k3d搭建k3s集群</h1>
+        <div class="stuff">
+            <span>十一月 24, 2020</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <p><a href="https://k3d.io/" target="_blank" rel="noopener"><b>k3d官网</b></a></p>
+<h3 id="1、安装k3d"><a href="#1、安装k3d" class="headerlink" title="1、安装k3d"></a>1、安装k3d</h3><ul>
+<li><p>Windows<br>下载<a href="https://github.com/rancher/k3d/releases" target="_blank" rel="noopener">最新版本</a>文件，放在指定目录，并加入环境变量即可使用</p>
+</li>
+<li><p>Linux</p>
+<blockquote>
+<p>wget -q -O - <a href="https://raw.githubusercontent.com/rancher/k3d/main/install.sh" target="_blank" rel="noopener">https://raw.githubusercontent.com/rancher/k3d/main/install.sh</a> | bash<br>或<br>curl -s <a href="https://raw.githubusercontent.com/rancher/k3d/main/install.sh" target="_blank" rel="noopener">https://raw.githubusercontent.com/rancher/k3d/main/install.sh</a> | bash</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="2、k3d使用"><a href="#2、k3d使用" class="headerlink" title="2、k3d使用"></a>2、k3d使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 查看版本</span><br><span class="line">k3d version</span><br><span class="line"></span><br><span class="line"># 查看集群</span><br><span class="line">k3d cluster list</span><br><span class="line"></span><br><span class="line"># 创建集群</span><br><span class="line">k3d cluster create demo --servers 3 --agents 3</span><br></pre></td></tr></table></figure>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://link.hhtjim.com/163/425570952.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、安装k3d"><span class="toc-number">1.</span> <span class="toc-text">1、安装k3d</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、k3d使用"><span class="toc-number">2.</span> <span class="toc-text">2、k3d使用</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
 </body>
 
 
