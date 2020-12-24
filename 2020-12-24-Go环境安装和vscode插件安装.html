@@ -5,12 +5,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>JS无限分类数组转化成树形结构数据 - 月下飞雪博客网</title>
+    <title>Go环境安装和vscode插件安装 - 月下飞雪博客网</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="月下飞雪博客网站，定期分享和记录一些技术知识点，供大家以后参考学习,1234567891011121314151617181920212223// data [&amp;#123;id:1001,pid:1002,name:&#39;Apple&#39;&amp;#125;,...]toTree(,"> 
+    <meta name="description" content="月下飞雪博客网站，定期分享和记录一些技术知识点，供大家以后参考学习,1、Go环境安装安装包下载地址: https://golang.google.cn/dl/根据网站下载提示进行安装即可
+2、vscode插件安装
+Go有一个全球模块代理，设置一下代理再去安装，就可以,"> 
     <meta name="author" content="Di Fei"> 
     <link rel="alternative" href="atom.xml" title="月下飞雪博客网" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -38,7 +40,7 @@
     <div class="bar" style="width: 0;"></div>
     <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://dfei.gitee.io"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
-    <h3 class="subtitle">JS无限分类数组转化成树形结构数据</h3>
+    <h3 class="subtitle">Go环境安装和vscode插件安装</h3>
     <div class="social">
         <div>
             <div class="share">
@@ -53,14 +55,21 @@
     <div class="section">
         <div class="article">
     <div class='main'>
-        <h1 class="title">JS无限分类数组转化成树形结构数据</h1>
+        <h1 class="title">Go环境安装和vscode插件安装</h1>
         <div class="stuff">
-            <span>十月 15, 2020</span>
+            <span>十二月 24, 2020</span>
             
 
         </div>
         <div class="content markdown">
-            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// data [&#123;id:1001,pid:1002,name:'Apple'&#125;,...]</span></span><br><span class="line">toTree(data) &#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 将数据存储为以 id 为 KEY 的 map 索引数据列</span></span><br><span class="line">  <span class="keyword">const</span> map = &#123;&#125;</span><br><span class="line">  data.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span><br><span class="line">    map[item.id] = item</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> val = []</span><br><span class="line">  data.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 以当前遍历项的pid,去map对象中找到索引的id</span></span><br><span class="line">    <span class="keyword">const</span> parent = map[item.pid]</span><br><span class="line">    <span class="comment">// 如果找到索引，那么说明此项不在顶级当中,那么需要把此项添加到，他对应的父级中</span></span><br><span class="line">    <span class="keyword">if</span> (parent) &#123;</span><br><span class="line">      (parent.children || (parent.children = [])).push(item)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 如果没有在map中找到对应的索引ID,那么直接把当前的item添加到val结果集中，作为顶级</span></span><br><span class="line">      val.push(item)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> val</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h3 id="1、Go环境安装"><a href="#1、Go环境安装" class="headerlink" title="1、Go环境安装"></a>1、Go环境安装</h3><p>安装包下载地址: <a href="https://golang.google.cn/dl/" target="_blank" rel="noopener">https://golang.google.cn/dl/</a><br>根据网站下载提示进行安装即可</p>
+<h3 id="2、vscode插件安装"><a href="#2、vscode插件安装" class="headerlink" title="2、vscode插件安装"></a>2、vscode插件安装</h3><ul>
+<li>Go有一个全球模块代理，设置一下代理再去安装，就可以十分顺利的进行</li>
+<li>原网站 <a href="https://goproxy.io/" target="_blank" rel="noopener">https://goproxy.io/</a></li>
+<li>根据网站推荐设置，设置完毕后<font color="#f60">重启vscode</font></li>
+<li>在 VS Code 中，使用快捷键：command+shift+P，然后键入：go:install/update tools，将所有 17 个插件都勾选上，然后点击 OK 即开始安装。</li>
+</ul>
+
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
                 <source type="audio/mpeg" src="">
@@ -95,7 +104,7 @@
     </div>
     
         <div class='side'>
-				
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、Go环境安装"><span class="toc-number">1.</span> <span class="toc-text">1、Go环境安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、vscode插件安装"><span class="toc-number">2.</span> <span class="toc-text">2、vscode插件安装</span></a></li></ol>	
         </div>
     
 </div>
